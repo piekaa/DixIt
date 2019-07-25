@@ -1,0 +1,35 @@
+.main-container {
+    margin: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.button {
+    padding: 16px;
+    font-size: 2em;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.green {
+    background-color: #8dff54;
+}
+
+input {
+    height: 64px;
+    font-size: 2em;
+    padding-left: 16px;
+    border-color: #4ea9ff;
+    width: 280px;
+}
+
+label {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}

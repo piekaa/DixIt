@@ -9,7 +9,7 @@ import (
 type Game interface {
 	Start(roomName string) *room.Room
 	//false if name is taken
-	ChooseName(roomName, playerName string) (bool, error)
+	ChooseName(roomName, playerName string) (success bool, err error)
 	Ready(roomName, playerName string) error
 	ChooseFirst(roomName, playerName string) (bool, error)
 	ChooseCards(roomName, playerName string, myCard, myType int) error

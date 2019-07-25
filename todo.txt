@@ -1,3 +1,5 @@
 //todo room clearing
 
 //todo switch places on start
+
+//todo favicon

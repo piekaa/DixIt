@@ -1,11 +1,11 @@
 package player
 
 type Player struct {
-	Name         string
-	ReadyToStart bool
-	Position     int
-	DidChoose    bool
-	Vote         int
-	MyCard       int
-	Score        int
+	Name         string `json:"name"`
+	ReadyToStart bool   `json:"readyToStart"`
+	Position     int    `json:"position"`
+	DidChoose    bool   `json:"didChoose"`
+	Vote         int    `json:"vote"`
+	MyCard       int    `json:"myCard"`
+	Score        int    `json:"score"`
 }
