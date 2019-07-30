@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func (s *Server) addPlayer(c echo.Context) error {
+func (s *Server) meFirst(c echo.Context) error {
 
 	body := struct {
 		Name   string `json:"name"`
@@ -21,15 +21,16 @@ func (s *Server) addPlayer(c echo.Context) error {
 		}{"Cannot deserialize request body"})
 	}
 
-	success, err := s.game.ChooseName(body.RoomId, body.Name)
-	if err != nil {
-		return handleError(c, err)
-	}
+	success, err := s.game.ChooseFirst(body.RoomId, body.Name)
 
 	if !success {
 		return c.JSON(http.StatusConflict, &struct {
 			Message string `json:"message"`
-		}{"Name already taken"})
+		}{"Someone elese was first"})
+	}
+
+	if err != nil {
+		return handleError(c, err)
 	}
 
 	return c.JSON(http.StatusOK, &struct {

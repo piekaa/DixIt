@@ -21,6 +21,8 @@ func (s *Server) init() {
 	e.GET("/api/pull/:roomId", s.pull)
 	e.POST("/api/room", s.createRoom)
 	e.POST("/api/name", s.addPlayer)
+	e.POST("/api/ready", s.ready)
+	e.POST("/api/me-first", s.meFirst)
 	e.Static("/", "static")
 	e.Logger.Fatal(e.Start(":6999"))
 }

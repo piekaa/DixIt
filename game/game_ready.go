@@ -17,7 +17,10 @@ func (this *game) Ready(roomName, playerName string) error {
 
 	p.ReadyToStart = true
 
-	this.startIfAllReady(r)
+	//todo test
+	if len(r.Players) >= 3 {
+		this.startIfAllReady(r)
+	}
 
 	return nil
 }

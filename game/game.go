@@ -13,7 +13,6 @@ type Game interface {
 	Ready(roomName, playerName string) error
 	ChooseFirst(roomName, playerName string) (bool, error)
 	ChooseCards(roomName, playerName string, myCard, myType int) error
-
 	Pull(roomName string) (*PullResponse, error)
 	calculateScoreIfAllPlayersVoted(room *room.Room)
 }

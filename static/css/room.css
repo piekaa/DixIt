@@ -1,0 +1,22 @@
+
+#copyToClipboard {
+
+    border: none;
+    color: transparent;
+    position: absolute;
+
+    /*display: none;*/
+
+    height: 0;
+    bottom: 0;
+}
+
+
+li {
+    list-style: none;
+    font-size: 2em;
+}
+
+li.ready {
+    color: #8dff54;
+}

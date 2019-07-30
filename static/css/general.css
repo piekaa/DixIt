@@ -8,6 +8,7 @@
 
 .button {
     padding: 16px;
+    margin: 8px;
     font-size: 2em;
     display: inline-block;
     border-radius: 10px;
@@ -19,6 +20,14 @@
 
 .green {
     background-color: #8dff54;
+}
+
+.blue {
+    background-color: #2f95ff;
+}
+
+.disabled {
+    background-color: rgba(169, 157, 138, 0.6);
 }
 
 input {
