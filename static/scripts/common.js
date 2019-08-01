@@ -38,6 +38,12 @@ function POST(path, body, successCallback, errorCallback) {
 
 }
 
+function removeAllChilds(listElement) {
+    while (listElement.firstChild) {
+        listElement.removeChild(listElement.firstChild);
+    }
+}
+
 const STATE_LOBBY = "lobby";
 const STATE_WHO_FIRST = "whoFirst";
 const STATE_CHOOSE_CARDS = "chooseCards";

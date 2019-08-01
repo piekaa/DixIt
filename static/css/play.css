@@ -1,0 +1,63 @@
+.card-to-choose {
+    position: relative;
+    margin: 8px 0;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    width: 200px;
+    height: 50px;
+    background-image: linear-gradient(to right, #dbe2db, #a9b0a9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+}
+
+.card-to-choose__mine {
+    background-image: linear-gradient(to right, #1fed26, #a9b0a9);
+}
+
+.card-to-choose__theirs {
+    background-image: linear-gradient(to right, #dbe2db, #0d70ff);
+}
+
+.card-to-choose__left {
+    flex-grow: 1;
+    height: 50px;
+}
+
+.card-to-choose__center {
+    position: absolute;
+}
+
+.card-to-choose__right {
+    flex-grow: 1;
+    height: 50px;
+}
+
+.playground {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.playground__column {
+    display: flex;
+    margin: 8px;
+    width: 30px;
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 200;
+}
+
+.speaker {
+    font-size: 1.5em;
+}
+
+.speaker-headline {
+    font-size: 1.5em;
+}

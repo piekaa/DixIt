@@ -9,6 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
 function setRoomIdAndName() {
     let params = new URLSearchParams(window.location.search);
     if (params.has("id")) {
+        7
         roomId = params.get("id");
         localStorage.setItem("roomId", roomId);
     } else {
@@ -87,9 +88,7 @@ function fillPlayersListOrStartGame(listElement) {
         if (state === STATE_LOBBY) {
             let players = json.payload.players;
 
-            while (listElement.firstChild) {
-                listElement.removeChild(listElement.firstChild);
-            }
+            removeAllChilds(listElement);
 
             for (let playersKey in players) {
                 let li = document.createElement("li");
