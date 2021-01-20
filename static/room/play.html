@@ -9,20 +9,19 @@
     <link rel="icon" href="../img/favicon.png" type="image/png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="../scripts/common.js"></script>
-    <script src="../scripts/room.js"></script>
     <script src="../scripts/play.js"></script>
 </head>
 <body>
 <div class="main-container">
-    <div class="speaker-headline">Wymyśla:</div>
     <div class="speaker" id="speaker"></div>
     <div class="playground">
-        <div class="playground__column">Moja Karta</div>
-        <div id="mainCardContainer"></div>
-        <div class="playground__column">Mój Wybór</div>
+        <div id="leftColumn" class="playground__column">Moja Karta</div>
+        <div id="mainCardContainer" class="main-card-container"></div>
+        <div id="rightColumn" class="playground__column">Mój Wybór</div>
     </div>
 
-    <div class="button green">Zatwierdź!</div>
+    <div onclick="onAccept()" id="accept" class="button green disabled hidden">Zatwierdź!</div>
+    <div onclick="onGoNext()" id="goNext" class="button green disabled hidden">Ok</div>
 
 </div>
 </body>

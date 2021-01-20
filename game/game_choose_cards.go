@@ -7,7 +7,6 @@ import (
 )
 
 func (this *game) ChooseCards(roomName, playerName string, myCard, myType int) error {
-
 	if !this.roomRepository.Has(roomName) {
 		return errors.New("room does not exist")
 	}
@@ -20,6 +19,10 @@ func (this *game) ChooseCards(roomName, playerName string, myCard, myType int) e
 	p, has := r.Players[playerName]
 	if !has {
 		return errors.New("player does not exist in room")
+	}
+
+	if r.ActivePlayer == p.Name {
+		myType = myCard
 	}
 
 	if myCard <= 0 || myCard > len(r.Players) {

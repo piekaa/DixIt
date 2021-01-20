@@ -36,7 +36,12 @@
 
 .playground {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+}
+
+.main-card-container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
 }
 

@@ -9,7 +9,7 @@ import (
 func (s *Server) addPlayer(c echo.Context) error {
 
 	body := struct {
-		Name   string `json:"name"`
+		Name   string `json:"playerName"`
 		RoomId string `json:"roomId"`
 	}{}
 	err := c.Bind(&body)

@@ -1,7 +1,7 @@
 package player
 
 type Player struct {
-	Name         string `json:"name"`
+	Name         string `json:"playerName"`
 	ReadyToStart bool   `json:"readyToStart"`
 	Position     int    `json:"position"`
 	DidChoose    bool   `json:"didChoose"`

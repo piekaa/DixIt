@@ -11,8 +11,12 @@ func TestGame_Pull_IN_STATE_RESULT(t *testing.T) {
 		p1myCard, p1myType, p2myCard, p2myType, p3myCard, p3myType, p1score, p2score, p3score int
 	}{
 		{1, 1, 2, 3, 3, 2, 0, 3, 3}, // all miss
+		{2, 2, 1, 3, 3, 1, 0, 3, 3}, // all miss
+		{3, 3, 1, 2, 2, 1, 0, 3, 3}, // all miss
 		{1, 1, 2, 1, 3, 1, 0, 2, 2}, // all hit
-		{1, 1, 2, 1, 3, 2, 3, 4, 0}} // one hit
+		{1, 3, 2, 1, 3, 2, 3, 4, 0},
+		{1, 1, 2, 1, 3, 2, 3, 4, 0},
+		{1, 1, 2, 3, 3, 1, 3, 0, 4}} // one hit
 	for i, v := range cases {
 		g := prepareGameWith3Players(t)
 		err := g.ChooseCards("r1", "n1", v.p1myCard, v.p1myType)

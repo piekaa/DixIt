@@ -1,16 +1,11 @@
 
 #copyToClipboard {
-
-    border: none;
-    color: transparent;
-    position: absolute;
-
-    /*display: none;*/
-
-    height: 0;
-    bottom: 0;
+    border: solid 1px;
 }
 
+ul {
+    padding-inline-start: 0;
+}
 
 li {
     list-style: none;

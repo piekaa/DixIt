@@ -22,12 +22,24 @@
     background-color: #8dff54;
 }
 
+.green-text {
+    color: #029100;
+}
+
 .blue {
     background-color: #2f95ff;
 }
 
+.gold {
+    background-color: #ffee19;
+}
+
 .disabled {
     background-color: rgba(169, 157, 138, 0.6);
+}
+
+.hidden {
+    display: none;
 }
 
 input {

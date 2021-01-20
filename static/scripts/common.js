@@ -1,3 +1,5 @@
+// alert("common");
+
 function GET(path, successCallback, errorCallback) {
     fetch(path)
         .then((res) => {
@@ -42,6 +44,42 @@ function removeAllChilds(listElement) {
     while (listElement.firstChild) {
         listElement.removeChild(listElement.firstChild);
     }
+}
+
+
+function setRoomIdAndName() {
+    // alert("setRoomIdAndName");
+    document.roomId = "unknownRoomId";
+    document.playerName = "unknownPlayerName";
+    let params = new URLSearchParams(window.location.search);
+    if (params.has("id")) {
+        document.roomId = params.get("id");
+        localStorage.setItem("roomId", document.roomId);
+    } else {
+        let roomIdFromStorage = localStorage.getItem("roomId");
+        if (roomIdFromStorage !== null) {
+            document.roomId = roomIdFromStorage;
+        }
+    }
+    let nameFromStorage = localStorage.getItem("playerName");
+    if (nameFromStorage !== null) {
+        document.playerName = nameFromStorage;
+    }
+
+    // alert("rid: " + document.roomId);
+    // alert("name: " + document.playerName);
+
+}
+
+function readyCall(btn) {
+    POST("/api/ready", {roomId: document.roomId, playerName: document.playerName}, () => {
+        },
+        (body, status) => {
+            btn.classList.remove("disabled");
+            //todo handle error
+            console.log(body);
+            console.log(status);
+        });
 }
 
 const STATE_LOBBY = "lobby";

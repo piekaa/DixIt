@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+//todo once it's pass other time it fails
 func TestGame_Pull_IN_FALSE_STATE_RESULT(t *testing.T) {
 
 	g := prepareGameWith3Players(t)

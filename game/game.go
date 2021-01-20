@@ -8,7 +8,7 @@ import (
 
 type Game interface {
 	Start(roomName string) *room.Room
-	//false if name is taken
+	//false if playerName is taken
 	ChooseName(roomName, playerName string) (success bool, err error)
 	Ready(roomName, playerName string) error
 	ChooseFirst(roomName, playerName string) (bool, error)
@@ -41,8 +41,16 @@ func (this *game) startIfAllReady(r *room.Room) {
 		return
 	}
 
+	if r.GameState == state.LOBBY {
+		for _, p := range r.Players {
+			r.PlayersByPosition[p.Position] = p
+		}
+	}
+
 	for _, p := range r.Players {
 		p.ReadyToStart = false
+		p.MyCard = 0
+		p.Vote = 0
 	}
 
 	nextState := map[string]string{}
@@ -68,9 +76,9 @@ func (this *game) startIfAllReady(r *room.Room) {
 func (this *game) calculateScoreIfAllPlayersVoted(r *room.Room) {
 
 	activePlayerCard := r.Players[r.ActivePlayer].MyCard
-	activePlayerCardVoteCound := 0
+	activePlayerCardVoteCount := 0
 
-	positionPlayerMap := map[int]*player.Player{}
+	cardPositionPlayerMap := map[int]*player.Player{}
 	myCards := map[int]bool{}
 
 	for _, p := range r.Players {
@@ -82,7 +90,7 @@ func (this *game) calculateScoreIfAllPlayersVoted(r *room.Room) {
 
 		myCards[p.MyCard] = true
 
-		positionPlayerMap[p.Position] = p
+		cardPositionPlayerMap[p.MyCard] = p
 		if p.Vote == 0 {
 			return
 		}
@@ -90,13 +98,13 @@ func (this *game) calculateScoreIfAllPlayersVoted(r *room.Room) {
 			continue
 		}
 		if p.Vote == activePlayerCard {
-			activePlayerCardVoteCound++
+			activePlayerCardVoteCount++
 		}
 	}
 
 	r.GameState = state.ROUND_RESULT
 
-	if activePlayerCardVoteCound == 0 || activePlayerCardVoteCound == len(r.Players)-1 {
+	if activePlayerCardVoteCount == 0 || activePlayerCardVoteCount == len(r.Players)-1 {
 		for _, p := range r.Players {
 			if p.Name == r.ActivePlayer {
 				continue
@@ -104,7 +112,7 @@ func (this *game) calculateScoreIfAllPlayersVoted(r *room.Room) {
 			p.Score += 2
 
 			if p.Vote != activePlayerCard {
-				positionPlayerMap[p.Vote].Score++
+				cardPositionPlayerMap[p.Vote].Score++
 			}
 		}
 	} else {
@@ -117,7 +125,7 @@ func (this *game) calculateScoreIfAllPlayersVoted(r *room.Room) {
 				p.Score += 3
 				r.Players[r.ActivePlayer].Score += 3
 			} else {
-				positionPlayerMap[p.Vote].Score++
+				cardPositionPlayerMap[p.Vote].Score++
 			}
 		}
 	}
